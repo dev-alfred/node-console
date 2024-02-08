@@ -6,6 +6,7 @@ app.use("/public", express.static(__dirname + "/public"));
 const absolutePath = __dirname + "/views/index.html";
 app.get("/", (req, res) => res.sendFile(absolutePath));
 
-app.get("/json", (req, res) => res.json({"message":"Hello json"}));
+const msg = "Hello json";
+app.get("/json", (req, res) => res.json({"message": process.env.MESSAGE_STYLE = "uppercase" ? msg.toUpperCase() : msg.toLowerCase()}));
 
 module.exports = app;
