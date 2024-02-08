@@ -7,6 +7,14 @@ const absolutePath = __dirname + "/views/index.html";
 app.get("/", (req, res) => res.sendFile(absolutePath));
 
 const msg = "Hello json";
-app.get("/json", (req, res) => res.json({"message": process.env.MESSAGE_STYLE.toLowerCase() === "uppercase" ? msg.toUpperCase() : msg.toLowerCase()}));
+const msg_style = process.env.MESSAGE_STYLE;
+app.get("/json", (req, res) =>
+  res.json({
+    message:
+      msg_style.toLowerCase() === "uppercase"
+        ? msg.toUpperCase()
+        : msg.toLowerCase(),
+  }),
+);
 
 module.exports = app;
