@@ -8,14 +8,16 @@ app.get("/", (req, res) => res.sendFile(absolutePath));
 
 const msg = "Hello json";
 const msg_style = process.env.MESSAGE_STYLE;
-const responst =
-  msg_style.toLowerCase() === "uppercase"
-    ? msg.toUpperCase()
-    : msg.toLowerCase();
-app.get("/json", (req, res) =>
+
+app.get("/json", (req, res) => {
+  const responst =
+    msg_style.toLowerCase() === "uppercase"
+      ? msg.toUpperCase()
+      : msg.toLowerCase();
+
   res.json({
-    message: responst
-  }),
-);
+    message: responst,
+  });
+});
 
 module.exports = app;
